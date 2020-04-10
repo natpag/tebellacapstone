@@ -8,9 +8,6 @@ namespace TeBellaCapstone.Models
   public partial class DatabaseContext : DbContext
   {
 
-
-
-
     private string ConvertPostConnectionToConnectionString(string connection)
     {
       var _connection = connection.Replace("postgres://", String.Empty);

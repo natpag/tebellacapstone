@@ -1,14 +1,48 @@
 /* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+body {
+  background-color: #f9f9f9;
 }
 
-code {
-  color: #e01a76;
+a {
+  color: black;
 }
 
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
+}
+
+.randomizePage {
+  display: grid;
+  grid-template-rows: 2rem 2rem 2rem 10rem 10rem 10rem 10rem;
+  grid-template-columns: 15% 25% 35% 25%;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.05);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  font-weight: lighter;
+  padding-bottom: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  align-items: center;
 }
