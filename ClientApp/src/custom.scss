@@ -1,6 +1,6 @@
 /* Provide sufficient contrast against white background */
-body {
-  background-color: #f9f9f9;
+.body {
+  background-color: #f1ede1;
 }
 
 a {
@@ -15,13 +15,16 @@ a {
 
 .randomizePage {
   display: grid;
-  grid-template-rows: 2rem 2rem 2rem 10rem 10rem 10rem 10rem;
-  grid-template-columns: 15% 25% 35% 25%;
+  grid-template-rows: 2rem 7rem 5rem 5rem 5rem 5rem 5rem 5rem;
+  grid-template-columns: 25% 50% 25%;
+}
+
+main {
+  grid-row-start: 2;
+  grid-column-start: 2;
 }
 
 nav {
-  display: flex;
-  justify-content: space-between;
   margin-right: auto;
   margin-left: auto;
   padding: 0;
@@ -31,7 +34,7 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.5);
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.05);
 }
@@ -41,8 +44,59 @@ nav ul {
   display: flex;
   justify-content: space-evenly;
   font-weight: lighter;
-  padding-bottom: 0;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
+  margin-bottom: 0;
   align-items: center;
+  font-size: 8px;
+}
+.hero {
+  align-items: center;
+  text-align: center;
+}
+
+.logo {
+  margin-top: 1rem;
+  width: 14rem;
+  height: auto;
+}
+button {
+  // background-color: #373737;
+  background-color: rgb(255, 255, 253);
+  font-size: 11px;
+  border: solid 1px;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.teaBox {
+  margin-top: 1rem;
+  border: solid 2px rgb(173, 173, 173);
+}
+
+.teaHeader {
+  border-bottom: solid 2px rgb(173, 173, 173);
+  display: flex;
+}
+
+@media (max-width: 426px) {
+  .hero {
+    grid-column-start: 2;
+    grid-column-end: 3;
+  }
+
+  .logo {
+    margin-top: 1rem;
+    width: 13rem;
+    height: auto;
+  }
+
+  .randomizer {
+    grid-row-start: 3;
+    grid-row-end: 4;
+    margin-top: 1rem;
+    margin-left: 4rem;
+  }
 }
