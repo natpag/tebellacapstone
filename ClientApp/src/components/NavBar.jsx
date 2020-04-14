@@ -9,13 +9,19 @@ const NavBar = () => {
       <section>
         <ul>
           <li>
-            <i className="fas fa-home"></i>
+            <Link to="/" className="homeLink">
+              <i className="fas fa-home"></i>
+            </Link>
           </li>
           <li>
-            <i className="fas fa-mug-hot"></i>
+            <Link to="/teahistory" className="teahistory">
+              <i className="fas fa-mug-hot"></i>
+            </Link>
           </li>
           <li>
-            <i className="fas fa-clipboard-list"></i>
+            <Link to="/tealog" className="tealog">
+              <i className="fas fa-clipboard-list"></i>
+            </Link>
           </li>
         </ul>
       </section>
@@ -23,7 +29,9 @@ const NavBar = () => {
       <section className="rightNav">
         <ul>
           <li>
-            <i className="far fa-user-circle"></i>
+            <Link to="/account" className="accountLink">
+              <i className="far fa-user-circle"></i>
+            </Link>
           </li>
         </ul>
       </section>

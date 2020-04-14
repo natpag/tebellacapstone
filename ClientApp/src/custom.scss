@@ -1,5 +1,9 @@
 /* Provide sufficient contrast against white background */
 
+* {
+  border: 1px dashed green;
+}
+
 .body {
   background-color: #f1ede1;
   height: 100%;
@@ -80,6 +84,12 @@ button {
   padding-right: 0.25rem;
 }
 
+.randomizer {
+  margin-top: 1rem;
+  margin-left: 21rem;
+  font-size: 10px;
+}
+
 .teaBox {
   margin-top: 1rem;
   border: solid 2px rgb(173, 173, 173);
@@ -114,16 +124,23 @@ button {
   font-size: 18px;
 }
 
-.teaImg {
-  width: 15.7rem;
-  height: 13rem;
+// .teaImg {
+//   width: 15.7rem;
+//   height: 13rem;
+// }
+
+.tea-image {
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
-.specialTeaRandomizer {
-  margin-top: 1rem;
-  border: solid 2px rgb(173, 173, 173);
-  background-color: rgb(235, 226, 201);
-  padding-bottom: 1rem;
+.teaImage {
+  width: 15.2rem;
+  height: 13rem;
+  background-image: url(/components/images/FloridaOrangeBlossom.jpg);
 }
 
 .selectorSection {
@@ -145,17 +162,40 @@ select {
   font-size: 10px;
 }
 
+.specialTeaRandomizer {
+  margin-top: 1rem;
+  border: solid 2px rgb(173, 173, 173);
+  background-color: rgb(235, 226, 201);
+  padding-bottom: 1rem;
+}
+
 .specialRandomizer {
   text-align: center;
   margin-left: 4.5rem;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
+  font-size: 10px;
+}
+
+.pageTitle {
+  grid-row-start: 2;
+  grid-column-start: 1;
+  grid-column-end: 2;
 }
 
 @media (max-width: 426px) {
+  * {
+    border: 1px dashed pink;
+  }
+
+  .body {
+    background-color: #f1ede1;
+    height: 100%;
+  }
+
   .hero {
-    grid-column-start: 2;
-    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-column-start: 1;
   }
 
   .logo {
@@ -170,4 +210,12 @@ select {
     margin-top: 1rem;
     margin-left: 6rem;
   }
+}
+
+.black {
+}
+
+.green {
+}
+.oolong {
 }

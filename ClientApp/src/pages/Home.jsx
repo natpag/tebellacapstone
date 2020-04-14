@@ -4,6 +4,7 @@ import Logo from '../components/images/logo.png'
 import blackEarlGreyLavender from '../components/images/blackEarlGreyLavender.jpg'
 import FloridaOrangeBlossom from '../components/images/FloridaOrangeBlossom.jpg'
 import '../custom.scss'
+import { TeaHistory } from './TeaHistory'
 
 export function Home() {
   return (
@@ -48,30 +49,40 @@ export function Home() {
 
               <select>
                 <option value="0"></option>
-                <option value="1">White</option>
-                <option value="2">Black</option>
-                <option value="3">Green</option>
-                <option value="4">Oolong</option>
+                <option value="1">Citrusy</option>
+                <option value="2">Dessert</option>
+                <option value="3">Earthy</option>
+                <option value="4">Floral</option>
+                <option value="4">Fruity</option>
+                <option value="4">Malty</option>
+                <option value="4">Minty</option>
+                <option value="4">Nutty</option>
+                <option value="4">Spicy</option>
+                <option value="4">Sweet</option>
               </select>
             </section>
           </section>
           <section className="teaBox">
             <section className="teaHeader">
               <section className="teaFamilyLabel"> {/* TeaFamily */} B</section>
-              <section className="teaFamilyColor">
+              <section className={'teaFamilyColor'}>
                 {/* TeaFamilyColor */}.
               </section>
               <section className="teaNameLabel">
                 {/* TeaName */} Earl Grey Lavender
               </section>
             </section>
-            <section className="teaImage">
-              <img
-                /* TeaPicture */ className="teaImg"
+            <div className="teaImage">
+              <div
+                className="tea-image"
+                style={{ backgroundImage: `url(${blackEarlGreyLavender})` }}
+              ></div>
+              {/* <img
+                 className="teaImg"
                 src={blackEarlGreyLavender}
                 alt="image"
-              />
-            </section>
+              /> */}
+            </div>
           </section>
         </main>
       </section>
