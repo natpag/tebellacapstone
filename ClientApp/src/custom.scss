@@ -1,6 +1,8 @@
 /* Provide sufficient contrast against white background */
+
 .body {
   background-color: #f1ede1;
+  height: 100%;
 }
 
 a {
@@ -21,7 +23,7 @@ main {
 nav {
   margin-right: auto;
   margin-left: auto;
-  padding: 0;
+  display: flex;
 }
 
 .header {
@@ -33,18 +35,31 @@ nav {
   box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.05);
 }
 
+.fa-home {
+  padding-right: 0.5rem;
+}
+
+.fa-mug-hot {
+  padding-right: 0.5rem;
+}
+
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 1rem;
+}
+
 nav ul {
   list-style: none;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   font-weight: lighter;
   padding-bottom: 0.5rem;
   padding-top: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
   margin-bottom: 0;
-  align-items: center;
-  font-size: 8px;
+  font-size: 15px;
 }
 .hero {
   align-items: center;
@@ -116,13 +131,18 @@ button {
   justify-content: space-evenly;
 }
 
+.selectorLabelSection {
+  display: flex;
+  justify-content: space-around;
+}
+
 .selectorLabel {
   font-size: 11px;
 }
 select {
   width: 4rem;
   height: 1rem;
-  font-size: 1px;
+  font-size: 10px;
 }
 
 .specialRandomizer {
