@@ -7,16 +7,10 @@ a {
   color: black;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
 .randomizePage {
   display: grid;
   grid-template-rows: 2rem 7rem 5rem 5rem 5rem 5rem 5rem 5rem;
-  grid-template-columns: 25% 50% 25%;
+  grid-template-columns: 20% 60% 20%;
 }
 
 main {
@@ -74,11 +68,68 @@ button {
 .teaBox {
   margin-top: 1rem;
   border: solid 2px rgb(173, 173, 173);
+  font-family: Times, 'Times New Roman', serif;
 }
 
 .teaHeader {
   border-bottom: solid 2px rgb(173, 173, 173);
   display: flex;
+}
+
+.teaFamilyLabel {
+  border-right: solid 2px rgb(173, 173, 173);
+  background-color: #373737;
+  color: #fff;
+  font-size: 30px;
+  width: 3rem;
+  text-align: center;
+}
+
+.teaFamilyColor {
+  border-right: solid 2px rgb(173, 173, 173);
+  background-color: dimgrey;
+  width: 1rem;
+}
+
+.teaNameLabel {
+  background-color: rgb(255, 255, 253);
+  width: 13rem;
+  text-align: center;
+  padding-top: 0.6rem;
+  font-size: 18px;
+}
+
+.teaImg {
+  width: 15.7rem;
+  height: 13rem;
+}
+
+.specialTeaRandomizer {
+  margin-top: 1rem;
+  border: solid 2px rgb(173, 173, 173);
+  background-color: rgb(235, 226, 201);
+  padding-bottom: 1rem;
+}
+
+.selectorSection {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.selectorLabel {
+  font-size: 11px;
+}
+select {
+  width: 4rem;
+  height: 1rem;
+  font-size: 1px;
+}
+
+.specialRandomizer {
+  text-align: center;
+  margin-left: 4.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 @media (max-width: 426px) {
@@ -97,6 +148,6 @@ button {
     grid-row-start: 3;
     grid-row-end: 4;
     margin-top: 1rem;
-    margin-left: 4rem;
+    margin-left: 6rem;
   }
 }
