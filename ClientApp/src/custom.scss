@@ -451,10 +451,31 @@ select {
     font-size: 14px;
   }
 
-  .pageTitle {
-    grid-row-start: 2;
-    grid-column-start: 1;
-    grid-column-end: 2;
+  .nameSection {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .inputField ul {
+    list-style: none;
+    font-size: 16px;
+  }
+
+  .nameInput {
+    width: 18rem;
+  }
+
+  .accountSection {
+    margin-left: 6.5rem;
+  }
+
+  .longInput {
+    width: 45.5rem;
+  }
+
+  .saveChanges {
+    margin-left: 9rem;
   }
 }
 
@@ -478,6 +499,39 @@ select {
     margin-left: 20.5rem;
     margin-top: 1rem;
     margin-bottom: 0.5rem;
+    font-size: 14px;
+  }
+
+  .pageTitle {
+    font-size: 50px;
+  }
+
+  .nameSection {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .inputField ul {
+    list-style: none;
+    font-size: 18px;
+  }
+
+  .nameInput {
+    border: black;
+    width: 32rem;
+  }
+
+  .accountSection {
+    margin-left: 6rem;
+  }
+
+  .longInput {
+    border: black;
+    width: 72.5rem;
+  }
+
+  .saveChanges {
+    margin-left: 8.5rem;
     font-size: 14px;
   }
 }
