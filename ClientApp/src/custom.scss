@@ -1,9 +1,5 @@
 /* Provide sufficient contrast against white background */
-
-* {
-  border: 1px dashed green;
-}
-
+/*HOME*/
 .body {
   background-color: #f1ede1;
   height: 100%;
@@ -15,7 +11,7 @@ a {
 
 .randomizePage {
   display: grid;
-  grid-template-rows: 2rem 7rem 5rem 5rem 5rem 5rem 5rem 5rem;
+  grid-template-rows: 2rem 7rem 5rem 5rem 5rem 5rem 5rem 5rem 5rem;
   grid-template-columns: 20% 60% 20%;
 }
 
@@ -114,7 +110,7 @@ button {
 
 .teaFamilyColor {
   border-right: solid 2px rgb(173, 173, 173);
-  background-color: dimgrey;
+  background-color: black;
   width: 1rem;
 }
 
@@ -174,19 +170,58 @@ select {
   font-size: 12px;
 }
 
+/*ACCOUNT MOBILE*/
+.body {
+  background-color: #f1ede1;
+  height: 100%;
+}
+
 .pageTitle {
   grid-row-start: 2;
+  grid-row-end: 3;
   grid-column-start: 1;
   grid-column-end: 2;
+  padding-left: 1rem;
+  margin-top: 3rem;
+  font-size: 40px;
+}
+
+.accountBody {
+  background-color: rgba(255, 255, 255, 0.5);
+  grid-row-start: 3;
+  grid-row-end: 10;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  padding: 1rem;
+  padding-left: 0rem;
+  margin: 1rem;
+}
+
+.nameSection {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.inputField ul {
+  list-style: none;
+  font-size: 12px;
+}
+
+.nameInput {
+  width: 9rem;
+}
+
+.longInput {
+  width: 20rem;
+}
+
+.saveChanges {
+  margin-left: 2.5rem;
 }
 
 /* Mobile */
 
 @media (max-width: 426px) {
-  * {
-    border: 1px dashed pink;
-  }
-
   .body {
     background-color: #f1ede1;
     height: 100%;
@@ -275,7 +310,7 @@ select {
   }
 
   .teaImage {
-    width: 15.2rem;
+    width: 100%;
     height: 13rem;
   }
 
@@ -427,7 +462,7 @@ select {
 @media (min-width: 1025px) {
   .body {
     background-color: #f1ede1;
-    height: 100vh;
+    height: 100%;
   }
 
   .randomizer {
