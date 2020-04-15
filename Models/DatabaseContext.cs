@@ -8,6 +8,14 @@ namespace TeBellaCapstone.Models
   public partial class DatabaseContext : DbContext
   {
 
+    public DbSet<Tea> Teas { get; set; }
+    public DbSet<TeaFamily> TeaFamilies { get; set; }
+    public DbSet<TeaType> TeaTypes { get; set; }
+    public DbSet<TeaFlavor> TeaFlavors { get; set; }
+    public DbSet<Review> Reviews { get; set; }
+    public DbSet<User> Users { get; set; }
+
+
     private string ConvertPostConnectionToConnectionString(string connection)
     {
       var _connection = connection.Replace("postgres://", String.Empty);

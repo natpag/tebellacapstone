@@ -1,12 +1,11 @@
 import React from 'react'
 import NavBar from '../components/NavBar'
 import Logo from '../components/images/logo.png'
-import blackEarlGreyLavender from '../components/images/blackEarlGreyLavender.jpg'
-import FloridaOrangeBlossom from '../components/images/FloridaOrangeBlossom.jpg'
 import '../custom.scss'
 import { TeaHistory } from './TeaHistory'
 
 export function Home() {
+  var url = 'blackEarlGreyLavender.jpg'
   return (
     <section className="body">
       <section className="randomizePage">
@@ -75,7 +74,10 @@ export function Home() {
             <div className="teaImage">
               <div
                 className="tea-image"
-                style={{ backgroundImage: `url(${blackEarlGreyLavender})` }}
+                style={{
+                  backgroundImage: `url(${require('../components/images/' +
+                    url)})`,
+                }}
               ></div>
               {/* <img
                  className="teaImg"
