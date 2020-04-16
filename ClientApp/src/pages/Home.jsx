@@ -1,11 +1,26 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import NavBar from '../components/NavBar'
 import Logo from '../components/images/logo.png'
+import blackEarlGreyLavender from '../components/images/blackEarlGreyLavender.jpg'
 import '../custom.scss'
-import { TeaHistory } from './TeaHistory'
+import { Link } from 'react-router-dom'
+import Axios from 'axios'
 
 export function Home() {
+  const [teas, setTeas] = useState([])
+
   var url = 'blackEarlGreyLavender.jpg'
+
+  const getAllTeas = async () => {
+    const resp = await Axios.get('/api/Teas')
+    console.log(resp.data)
+    setTeas(resp.data)
+  }
+
+  useEffect(() => {
+    getAllTeas()
+  }, [])
+
   return (
     <section className="body">
       <section className="randomizePage">
