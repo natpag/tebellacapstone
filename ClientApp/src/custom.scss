@@ -11,7 +11,7 @@ a {
 
 .randomizePage {
   display: grid;
-  grid-template-rows: 2rem 7rem 5rem 5rem 5rem 5rem 5rem 5rem 5rem;
+  grid-template-rows: 2rem 7rem 5rem 5rem 5rem 5rem 5rem 5rem 5rem 8rem;
   grid-template-columns: 20% 60% 20%;
 }
 
@@ -72,7 +72,6 @@ nav ul {
   height: auto;
 }
 button {
-  // background-color: #373737;
   background-color: rgb(255, 255, 253);
   font-size: 11px;
   border: solid 1px;
@@ -168,6 +167,13 @@ select {
   margin-top: 1rem;
   margin-bottom: 1rem;
   font-size: 12px;
+}
+
+.description {
+  font-size: 12px;
+  border: none;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 /*ACCOUNT MOBILE*/
@@ -477,6 +483,10 @@ select {
   .saveChanges {
     margin-left: 9rem;
   }
+
+  .description {
+    font-size: 14px;
+  }
 }
 
 /* Desktop */
@@ -533,6 +543,10 @@ select {
   .saveChanges {
     margin-left: 8.5rem;
     font-size: 14px;
+  }
+
+  .description {
+    font-size: 16px;
   }
 }
 

@@ -79,13 +79,20 @@ export function Home() {
                     url)})`,
                 }}
               ></div>
-              {/* <img
-                 className="teaImg"
-                src={blackEarlGreyLavender}
-                alt="image"
-              /> */}
             </div>
           </section>
+          <div>
+            <section className="description">
+              Our Andes Mountain Mist is a rare Colombian black tea, sourced
+              from the Chocó region of the Andes Mountains, and grown at an
+              elevation of 6,000 feet above sea level. While Colombia is known
+              more for coffee production, the Bitaco tea garden has begun
+              producing exquisite Orthodox grade teas. Grown near the Bitaco
+              Regional Forest Reserve, a protected rain forest, Bitaco’s tea
+              gardens benefit from nutrient-rich volcanic soil, which greatly
+              influences the lush flavor profiles of their black teas.
+            </section>
+          </div>
         </main>
       </section>
     </section>
