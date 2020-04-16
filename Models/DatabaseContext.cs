@@ -15,6 +15,8 @@ namespace TeBellaCapstone.Models
     public DbSet<Review> Reviews { get; set; }
     public DbSet<User> Users { get; set; }
 
+    public DbSet<UserTea> UserTeas { get; set; }
+
 
     private string ConvertPostConnectionToConnectionString(string connection)
     {
