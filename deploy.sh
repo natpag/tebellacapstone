@@ -1,8 +1,8 @@
-docker build -t TeBellaCapstone-image .
+docker build -t tebella-capstone-image .
 
-docker tag TeBellaCapstone-image registry.heroku.com/TeBellaCapstone/web
+docker tag tebella-capstone-image registry.heroku.com/tebella-capstone/web
 
 
-docker push registry.heroku.com/TeBellaCapstone/web
+docker push registry.heroku.com/tebella-capstone/web
 
-heroku container:release web -a TeBellaCapstone
+heroku container:release web -a tebella-capstone
