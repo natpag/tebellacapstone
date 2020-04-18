@@ -22,13 +22,11 @@ namespace TeBellaCapstone.Controllers
 
     // GET: api/Teas
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Tea>>> GetTeas()
+    public ActionResult<IEnumerable<Tea>> GetTeas()
     {
-      return await _context.Teas
-          .Include(tea => tea.TeaFamily)
-          .Include(tea => tea.TeaFlavor)
-          .Include(tea => tea.TeaType)
-          .ToListAsync();
+      var result = new ActionResult<IEnumerable<Tea>>(GetAllTeas());
+
+      return result;
     }
 
     // GET: api/Teas/5
@@ -43,6 +41,29 @@ namespace TeBellaCapstone.Controllers
       }
 
       return tea;
+    }
+
+    // GET: api/Teas/random
+    [HttpGet("random")]
+    public ActionResult<Tea> GetRandomTea()
+    {
+      var teas = GetAllTeas();
+
+      var numberOfTeas = teas.Count();
+
+      var randomIndex = new Random().Next(numberOfTeas);
+      var randomTea = teas.ElementAt(randomIndex);
+
+      return randomTea;
+    }
+
+    private IEnumerable<Tea> GetAllTeas()
+    {
+      return _context.Teas
+        .Include(tea => tea.TeaFamily)
+        .Include(tea => tea.TeaFlavor)
+        .Include(tea => tea.TeaType)
+        .ToList();
     }
 
     // PUT: api/Teas/5

@@ -8,6 +8,7 @@ import Axios from 'axios'
 
 export function Home() {
   const [teas, setTeas] = useState([])
+  const [randomTea, setRandomTea] = useState()
 
   var url = 'blackEarlGreyLavender.jpg'
 
@@ -15,6 +16,12 @@ export function Home() {
     const resp = await Axios.get('/api/Teas')
     console.log(resp.data)
     setTeas(resp.data)
+  }
+
+  const pullRandomTea = async () => {
+    const resp = await Axios.get('/api/Teas/random')
+    console.log(resp.data)
+    setRandomTea(resp.data)
   }
 
   useEffect(() => {
@@ -32,7 +39,9 @@ export function Home() {
             <img className="logo" src={Logo} alt="Logo" />
           </section>
 
-          <button className="randomizer">Random Tea</button>
+          <button className="randomizer" onClick={pullRandomTea}>
+            Random Tea
+          </button>
 
           <section className="specialTeaRandomizer">
             <button className="specialRandomizer">Special Random Tea</button>
