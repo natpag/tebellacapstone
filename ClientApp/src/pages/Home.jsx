@@ -10,7 +10,7 @@ export function Home() {
   const [teas, setTeas] = useState([])
   const [randomTea, setRandomTea] = useState()
 
-  var url = 'blackEarlGreyLavender.jpg'
+  //var url = 'blackEarlGreyLavender.jpg'
 
   const getAllTeas = async () => {
     const resp = await Axios.get('/api/Teas')
@@ -22,6 +22,27 @@ export function Home() {
     const resp = await Axios.get('/api/Teas/random')
     console.log(resp.data)
     setRandomTea(resp.data)
+  }
+
+  const getRandomTeaName = () => {
+    if (randomTea) {
+      return randomTea.name
+    }
+  }
+
+  const getRandomTeaDescription = () => {
+    if (randomTea) {
+      return randomTea.description
+    }
+  }
+
+  const getRandomTeaImageUrl = () => {
+    if (randomTea) {
+      var url = randomTea.url
+      return url
+    } else {
+      return ''
+    }
   }
 
   useEffect(() => {
@@ -91,30 +112,23 @@ export function Home() {
               <section className={'teaFamilyColor'}>
                 {/* TeaFamilyColor */}.
               </section>
-              <section className="teaNameLabel">
-                {/* TeaName */} Earl Grey Lavender
-              </section>
+              <section className="teaNameLabel">{getRandomTeaName()}</section>
             </section>
             <div className="teaImage">
-              <div
-                className="tea-image"
-                style={{
-                  backgroundImage: `url(${require('../components/images/' +
-                    url)})`,
-                }}
-              ></div>
+              {randomTea ? (
+                <div
+                  className="tea-image"
+                  style={{
+                    backgroundImage: `url(${require('../components/images/' +
+                      getRandomTeaImageUrl())})`,
+                  }}
+                ></div>
+              ) : null}
             </div>
           </section>
           <div>
             <section className="description">
-              Our Andes Mountain Mist is a rare Colombian black tea, sourced
-              from the Chocó region of the Andes Mountains, and grown at an
-              elevation of 6,000 feet above sea level. While Colombia is known
-              more for coffee production, the Bitaco tea garden has begun
-              producing exquisite Orthodox grade teas. Grown near the Bitaco
-              Regional Forest Reserve, a protected rain forest, Bitaco’s tea
-              gardens benefit from nutrient-rich volcanic soil, which greatly
-              influences the lush flavor profiles of their black teas.
+              {getRandomTeaDescription()}
             </section>
           </div>
         </main>
