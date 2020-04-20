@@ -1,22 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import NavBar from '../components/NavBar'
 import Logo from '../components/images/logo.png'
-import blackEarlGreyLavender from '../components/images/blackEarlGreyLavender.jpg'
 import '../custom.scss'
 import { Link } from 'react-router-dom'
 import Axios from 'axios'
 
 export function Home() {
-  const [teas, setTeas] = useState([])
   const [randomTea, setRandomTea] = useState()
-
-  //var url = 'blackEarlGreyLavender.jpg'
-
-  const getAllTeas = async () => {
-    const resp = await Axios.get('/api/Teas')
-    console.log(resp.data)
-    setTeas(resp.data)
-  }
 
   const pullRandomTea = async () => {
     const resp = await Axios.get('/api/Teas/random')
@@ -45,8 +35,44 @@ export function Home() {
     }
   }
 
+  const getRandomTeaFamily = () => {
+    if (randomTea) {
+      if (randomTea.teaFamily.name == 'Green') {
+        return 'G'
+      } else if (randomTea.teaFamily.name == 'Black') {
+        return 'B'
+      } else if (randomTea.teaFamily.name == 'Oolong') {
+        return 'O'
+      } else if (randomTea.teaFamily.name == 'White') {
+        return 'W'
+      }
+    } else {
+      return ''
+    }
+  }
+
+  const getTeaFamilyColor = () => {
+    if (randomTea) {
+      if (randomTea.teaFamily.name == 'Green') {
+        var bgG = 'green'
+        return bgG
+      } else if (randomTea.teaFamily.name == 'Black') {
+        var bgB = 'black'
+        return bgB
+      } else if (randomTea.teaFamily.name == 'Oolong') {
+        var bgO = 'oolong'
+        return bgO
+      } else if (randomTea.teaFamily.name == 'White') {
+        var bgW = 'white'
+        return bgW
+      }
+    } else {
+      return ''
+    }
+  }
+
   useEffect(() => {
-    getAllTeas()
+    pullRandomTea()
   }, [])
 
   return (
@@ -73,7 +99,7 @@ export function Home() {
             </section>
 
             <section className="selectorSection">
-              <select>
+              <select className="teaFamilySelector">
                 <option value="0"></option>
                 <option value="1">White</option>
                 <option value="2">Black</option>
@@ -81,7 +107,7 @@ export function Home() {
                 <option value="4">Oolong</option>
               </select>
 
-              <select>
+              <select className="teaFamilyType">
                 <option value="0"></option>
                 <option value="1">Flavored</option>
                 <option value="2">Organic</option>
@@ -91,7 +117,7 @@ export function Home() {
                 <option value="4">Traditional</option>
               </select>
 
-              <select>
+              <select className="teaFamilyFlavor">
                 <option value="0"></option>
                 <option value="1">Citrusy</option>
                 <option value="2">Dessert</option>
@@ -108,10 +134,13 @@ export function Home() {
           </section>
           <section className="teaBox">
             <section className="teaHeader">
-              <section className="teaFamilyLabel"> {/* TeaFamily */} B</section>
-              <section className={'teaFamilyColor'}>
-                {/* TeaFamilyColor */}.
+              <section className="teaFamilyLabel">
+                {' '}
+                {getRandomTeaFamily()}{' '}
               </section>
+              <section
+                className={getTeaFamilyColor() + ' teaFamilyColor'}
+              ></section>
               <section className="teaNameLabel">{getRandomTeaName()}</section>
             </section>
             <div className="teaImage">

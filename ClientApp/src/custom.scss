@@ -100,8 +100,8 @@ button {
 
 .teaFamilyLabel {
   border-right: solid 2px rgb(173, 173, 173);
-  background-color: #373737;
   color: #fff;
+  background-color: black;
   font-size: 30px;
   width: 3rem;
   text-align: center;
@@ -109,7 +109,6 @@ button {
 
 .teaFamilyColor {
   border-right: solid 2px rgb(173, 173, 173);
-  background-color: black;
   width: 1rem;
 }
 
@@ -176,6 +175,19 @@ select {
   margin-top: 1rem;
 }
 
+.black {
+  background-color: rgb(78, 78, 78);
+}
+
+.green {
+  background-color: forestgreen;
+}
+.oolong {
+  background-color: rgb(4, 202, 202);
+}
+.white {
+  background-color: bisque;
+}
 /*ACCOUNT MOBILE*/
 .body {
   background-color: #f1ede1;
@@ -274,7 +286,6 @@ select {
 
   .teaFamilyColor {
     border-right: solid 2px rgb(173, 173, 173);
-    background-color: dimgrey;
     width: 1rem;
   }
 
@@ -397,7 +408,6 @@ select {
 
   .teaFamilyColor {
     border-right: solid 2px rgb(173, 173, 173);
-    background-color: dimgrey;
     width: 1rem;
   }
 
@@ -548,12 +558,4 @@ select {
   .description {
     font-size: 16px;
   }
-}
-
-.black {
-}
-
-.green {
-}
-.oolong {
 }
