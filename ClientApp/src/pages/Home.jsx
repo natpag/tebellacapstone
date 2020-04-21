@@ -10,6 +10,8 @@ export function Home() {
   const [referenceData, setReferenceData] = useState()
   const [specialRandomTea, setSpecialRandomTea] = useState()
   const [selectedTeaFamily, setSelectedTeaFamily] = useState()
+  const [selectedTeaType, setSelectedTeaType] = useState()
+  const [selectedTeaFlavor, setSelectedTeaFlavor] = useState()
 
   const pullRandomTea = async () => {
     const resp = await Axios.get('/api/Teas/random')
@@ -95,6 +97,22 @@ export function Home() {
     }
   }
 
+  const getTeaTypes = () => {
+    if (referenceData) {
+      return referenceData.teaType
+    } else {
+      return []
+    }
+  }
+
+  const getTeaFlavors = () => {
+    if (referenceData) {
+      return referenceData.teaFlavor
+    } else {
+      return []
+    }
+  }
+
   useEffect(() => {
     pullRandomTea()
     getReferenceData()
@@ -134,28 +152,24 @@ export function Home() {
                 })}
               </select>
 
-              <select className="teaFamilyType">
+              <select
+                className="teaFamilyType"
+                onChange={e => setSelectedTeaType(e.target.value)}
+              >
                 <option value="0"></option>
-                <option value="1">Flavored</option>
-                <option value="2">Organic</option>
-                <option value="3">Reserved</option>
-                <option value="4">Seasonal</option>
-                <option value="4">Scented</option>
-                <option value="4">Traditional</option>
+                {getTeaTypes().map(teatype => {
+                  return <option value={teatype.id}>{teatype.name}</option>
+                })}
               </select>
 
-              <select className="teaFamilyFlavor">
+              <select
+                className="teaFamilyFlavor"
+                onChange={e => setSelectedTeaFlavor(e.target.value)}
+              >
                 <option value="0"></option>
-                <option value="1">Citrusy</option>
-                <option value="2">Dessert</option>
-                <option value="3">Earthy</option>
-                <option value="4">Floral</option>
-                <option value="4">Fruity</option>
-                <option value="4">Malty</option>
-                <option value="4">Minty</option>
-                <option value="4">Nutty</option>
-                <option value="4">Spicy</option>
-                <option value="4">Sweet</option>
+                {getTeaFlavors().map(teaflavor => {
+                  return <option value={teaflavor.id}>{teaflavor.name}</option>
+                })}
               </select>
             </section>
           </section>
