@@ -57,12 +57,18 @@ namespace TeBellaCapstone.Controllers
       return randomTea;
     }
 
-    // //Get: api/Teas/referenceData
-    // [HttpGet("referenceData")]
-    // public ActionResult<Tea> GetReferenceData()
-    // {
+    //Get: api/Teas/referenceData
+    [HttpGet("referenceData")]
+    public ActionResult<ReferenceDataModel> GetReferenceData()
+    {
+      var referenceData = new ReferenceDataModel();
 
-    // }
+      referenceData.TeaFamily = _context.TeaFamilies.ToList();
+      referenceData.TeaFlavor = _context.TeaFlavors.ToList();
+      referenceData.TeaType = _context.TeaTypes.ToList();
+
+      return referenceData;
+    }
 
     // //GET: api/Teas/specialRandom
     // public ActionResult<Tea> GetSpecialRandomTea()

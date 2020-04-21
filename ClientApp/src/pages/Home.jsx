@@ -7,7 +7,9 @@ import Axios from 'axios'
 
 export function Home() {
   const [randomTea, setRandomTea] = useState()
+  const [referenceData, setReferenceData] = useState()
   const [specialRandomTea, setSpecialRandomTea] = useState()
+  const [selectedTeaFamily, setSelectedTeaFamily] = useState()
 
   const pullRandomTea = async () => {
     const resp = await Axios.get('/api/Teas/random')
@@ -21,6 +23,12 @@ export function Home() {
   //   setSpecialRandomTea(resp.data)
 
   // }
+
+  const getReferenceData = async () => {
+    const resp = await Axios.get('/api/Teas/referenceData')
+    console.log(resp.data)
+    setReferenceData(resp.data)
+  }
 
   const getRandomTeaName = () => {
     if (randomTea) {
@@ -79,8 +87,17 @@ export function Home() {
     }
   }
 
+  const getTeaFamilies = () => {
+    if (referenceData) {
+      return referenceData.teaFamily
+    } else {
+      return []
+    }
+  }
+
   useEffect(() => {
     pullRandomTea()
+    getReferenceData()
   }, [])
 
   return (
@@ -107,12 +124,14 @@ export function Home() {
             </section>
 
             <section className="selectorSection">
-              <select className="teaFamilySelector">
+              <select
+                className="teaFamilySelector"
+                onChange={e => setSelectedTeaFamily(e.target.value)}
+              >
                 <option value="0"></option>
-                <option value="1">White</option>
-                <option value="2">Black</option>
-                <option value="3">Green</option>
-                <option value="4">Oolong</option>
+                {getTeaFamilies().map(teafamily => {
+                  return <option value={teafamily.id}>{teafamily.name}</option>
+                })}
               </select>
 
               <select className="teaFamilyType">
