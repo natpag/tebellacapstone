@@ -8,10 +8,10 @@ import Axios from 'axios'
 export function Home() {
   const [randomTea, setRandomTea] = useState()
   const [referenceData, setReferenceData] = useState()
-  const [specialRandomTea, setSpecialRandomTea] = useState()
   const [selectedTeaFamily, setSelectedTeaFamily] = useState()
   const [selectedTeaType, setSelectedTeaType] = useState()
   const [selectedTeaFlavor, setSelectedTeaFlavor] = useState()
+  const [specialRandomTea, setSpecialRandomTea] = useState()
 
   const pullRandomTea = async () => {
     const resp = await Axios.get('/api/Teas/random')
@@ -19,12 +19,15 @@ export function Home() {
     setRandomTea(resp.data)
   }
 
-  // const pullSpecialRandomTea = async () => {
-  //   const resp = await Axios.get('/api/Teas/random')
-  //   console.log(resp.data)
-  //   setSpecialRandomTea(resp.data)
-
-  // }
+  const getSpecialRandomTea = async () => {
+    const resp = await Axios.post('api/Teas/randomTeaFilter', {
+      TeaFamilyId: parseInt(selectedTeaFamily),
+      TeaFlavorId: parseInt(selectedTeaFlavor),
+      TeaTypeId: parseInt(selectedTeaType),
+    })
+    console.log(resp.data)
+    setRandomTea(resp.data)
+  }
 
   const getReferenceData = async () => {
     const resp = await Axios.get('/api/Teas/referenceData')
@@ -134,7 +137,9 @@ export function Home() {
           </button>
 
           <section className="specialTeaRandomizer">
-            <button className="specialRandomizer">Special Random Tea</button>
+            <button className="specialRandomizer" onClick={getSpecialRandomTea}>
+              Special Random Tea
+            </button>
             <section className="selectorLabelSection">
               <section className="selectorLabel">Tea Family</section>
               <section className="selectorLabel">Type</section>
@@ -146,9 +151,13 @@ export function Home() {
                 className="teaFamilySelector"
                 onChange={e => setSelectedTeaFamily(e.target.value)}
               >
-                <option value="0"></option>
+                <option value=""></option>
                 {getTeaFamilies().map(teafamily => {
-                  return <option value={teafamily.id}>{teafamily.name}</option>
+                  return (
+                    <option key={teafamily.id} value={teafamily.id}>
+                      {teafamily.name}
+                    </option>
+                  )
                 })}
               </select>
 
@@ -156,9 +165,13 @@ export function Home() {
                 className="teaFamilyType"
                 onChange={e => setSelectedTeaType(e.target.value)}
               >
-                <option value="0"></option>
+                <option value=""></option>
                 {getTeaTypes().map(teatype => {
-                  return <option value={teatype.id}>{teatype.name}</option>
+                  return (
+                    <option key={teatype.id} value={teatype.id}>
+                      {teatype.name}
+                    </option>
+                  )
                 })}
               </select>
 
@@ -166,9 +179,13 @@ export function Home() {
                 className="teaFamilyFlavor"
                 onChange={e => setSelectedTeaFlavor(e.target.value)}
               >
-                <option value="0"></option>
+                <option value=""></option>
                 {getTeaFlavors().map(teaflavor => {
-                  return <option value={teaflavor.id}>{teaflavor.name}</option>
+                  return (
+                    <option key={teaflavor.id} value={teaflavor.id}>
+                      {teaflavor.name}
+                    </option>
+                  )
                 })}
               </select>
             </section>

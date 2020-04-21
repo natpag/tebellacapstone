@@ -71,10 +71,10 @@ namespace TeBellaCapstone.Controllers
     }
 
     //Get: api/Teas/randomTeaFilter
-    [HttpGet("randomTeaFilter")]
+    [HttpPost("randomTeaFilter")]
     public ActionResult<Tea> GetRandomTeaFilter(RandomTeaFilterModel filterModel)
     {
-      var filteredTeas = _context.Teas.AsQueryable();
+      var filteredTeas = GetAllTeas();
 
       if (filterModel.TeaFamilyId.HasValue)
       {
@@ -88,12 +88,12 @@ namespace TeBellaCapstone.Controllers
       {
         filteredTeas = filteredTeas.Where(w => w.TeaTypeId == filterModel.TeaTypeId);
       }
-
       var numberOfTeas = filteredTeas.Count();
 
       var randomIndex = new Random().Next(numberOfTeas);
-      var randomTea = filteredTeas.ElementAt(randomIndex);
 
+      //   var randomTea = filteredTeas.ElementAt(randomIndex);
+      var randomTea = filteredTeas.Skip(randomIndex).First();
       return randomTea;
     }
 
