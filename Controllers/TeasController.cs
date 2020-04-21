@@ -70,6 +70,33 @@ namespace TeBellaCapstone.Controllers
       return referenceData;
     }
 
+    //Get: api/Teas/randomTeaFilter
+    [HttpGet("randomTeaFilter")]
+    public ActionResult<Tea> GetRandomTeaFilter(RandomTeaFilterModel filterModel)
+    {
+      var filteredTeas = _context.Teas.AsQueryable();
+
+      if (filterModel.TeaFamilyId.HasValue)
+      {
+        filteredTeas = filteredTeas.Where(w => w.TeaFamilyId == filterModel.TeaFamilyId);
+      }
+      if (filterModel.TeaFlavorId.HasValue)
+      {
+        filteredTeas = filteredTeas.Where(w => w.TeaFlavorId == filterModel.TeaFlavorId);
+      }
+      if (filterModel.TeaTypeId.HasValue)
+      {
+        filteredTeas = filteredTeas.Where(w => w.TeaTypeId == filterModel.TeaTypeId);
+      }
+
+      var numberOfTeas = filteredTeas.Count();
+
+      var randomIndex = new Random().Next(numberOfTeas);
+      var randomTea = filteredTeas.ElementAt(randomIndex);
+
+      return randomTea;
+    }
+
     // //GET: api/Teas/specialRandom
     // public ActionResult<Tea> GetSpecialRandomTea()
     // {
