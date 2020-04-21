@@ -57,6 +57,47 @@ namespace TeBellaCapstone.Controllers
       return randomTea;
     }
 
+    // //Get: api/Teas/referenceData
+    // [HttpGet("referenceData")]
+    // public ActionResult<Tea> GetReferenceData()
+    // {
+
+    // }
+
+    // //GET: api/Teas/specialRandom
+    // public ActionResult<Tea> GetSpecialRandomTea()
+    // {
+
+    //   var teas = GetAllTeas();
+    //   //Try to redo this so that the array only includes the selected bits.... 
+
+    //   var numberOfTeas = teas.Count();
+
+    //   var randomIndex = new Random().Next(numberOfTeas);
+    //   var randomTea = teas.ElementAt(randomIndex);
+
+    //   return randomTea;
+    // }
+
+
+    // private IEnumerable<Tea> GetAllSpecialTeas(string TeaFamily, string TeaFlavor, string TeaType)
+    // {
+    //   var results =  _context.Teas.Where(w =>
+    //     w.Tea.Contains(TeaFamily.ToLower()) ||
+    //     w.TeaFlavor.ToLower().Contains(TeaFlavor.ToLower()) ||
+    //     w.TeaType.ToLower().Contains(TeaType.ToLower())
+
+
+    //   )
+    //     .Include(tea => tea.TeaFamily)
+    //     .Include(tea => tea.TeaFlavor)
+    //     .Include(tea => tea.TeaType)
+    //     .ToList();
+
+    //     return Ok(results.ToList());
+    // }
+
+
     private IEnumerable<Tea> GetAllTeas()
     {
       return _context.Teas

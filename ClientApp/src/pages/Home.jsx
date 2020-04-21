@@ -7,12 +7,20 @@ import Axios from 'axios'
 
 export function Home() {
   const [randomTea, setRandomTea] = useState()
+  const [specialRandomTea, setSpecialRandomTea] = useState()
 
   const pullRandomTea = async () => {
     const resp = await Axios.get('/api/Teas/random')
     console.log(resp.data)
     setRandomTea(resp.data)
   }
+
+  // const pullSpecialRandomTea = async () => {
+  //   const resp = await Axios.get('/api/Teas/random')
+  //   console.log(resp.data)
+  //   setSpecialRandomTea(resp.data)
+
+  // }
 
   const getRandomTeaName = () => {
     if (randomTea) {
