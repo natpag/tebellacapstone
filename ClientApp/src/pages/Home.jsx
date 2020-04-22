@@ -11,7 +11,6 @@ export function Home() {
   const [selectedTeaFamily, setSelectedTeaFamily] = useState()
   const [selectedTeaType, setSelectedTeaType] = useState()
   const [selectedTeaFlavor, setSelectedTeaFlavor] = useState()
-  const [specialRandomTea, setSpecialRandomTea] = useState()
 
   const pullRandomTea = async () => {
     const resp = await Axios.get('/api/Teas/random')
@@ -190,29 +189,36 @@ export function Home() {
               </select>
             </section>
           </section>
-          <section className="teaBox">
-            <section className="teaHeader">
-              <section className="teaFamilyLabel">
-                {' '}
-                {getRandomTeaFamily()}{' '}
+          {randomTea ? (
+            <section className="teaBox">
+              <section className="teaHeader">
+                <section className="teaFamilyLabel">
+                  {' '}
+                  {getRandomTeaFamily()}{' '}
+                </section>
+                <section
+                  className={getTeaFamilyColor() + ' teaFamilyColor'}
+                ></section>
+                <section className="teaNameLabel">{getRandomTeaName()}</section>
               </section>
-              <section
-                className={getTeaFamilyColor() + ' teaFamilyColor'}
-              ></section>
-              <section className="teaNameLabel">{getRandomTeaName()}</section>
+              <div className="teaImage">
+                {randomTea ? (
+                  <div
+                    className="tea-image"
+                    style={{
+                      backgroundImage: `url(${require('../components/images/' +
+                        getRandomTeaImageUrl())})`,
+                    }}
+                  ></div>
+                ) : null}
+              </div>
             </section>
-            <div className="teaImage">
-              {randomTea ? (
-                <div
-                  className="tea-image"
-                  style={{
-                    backgroundImage: `url(${require('../components/images/' +
-                      getRandomTeaImageUrl())})`,
-                  }}
-                ></div>
-              ) : null}
-            </div>
-          </section>
+          ) : (
+            <section className="hiddenResult">
+              It doesn't seem like there's any teas that match that description.
+              Please alter your search and try again.
+            </section>
+          )}
           <div>
             <section className="description">
               {getRandomTeaDescription()}
