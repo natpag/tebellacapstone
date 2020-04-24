@@ -188,6 +188,12 @@ select {
 .white {
   background-color: rgb(255, 249, 242);
 }
+
+.signupLink {
+  font-size: 10px;
+  padding-top: 1rem;
+  padding-left: 2rem;
+}
 /*ACCOUNT MOBILE*/
 .body {
   background-color: #f1ede1;
@@ -198,7 +204,7 @@ select {
   grid-row-start: 2;
   grid-row-end: 3;
   grid-column-start: 1;
-  grid-column-end: 2;
+  grid-column-end: 3;
   padding-left: 1rem;
   margin-top: 3rem;
   font-size: 40px;

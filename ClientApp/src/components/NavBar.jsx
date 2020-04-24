@@ -29,7 +29,7 @@ const NavBar = () => {
       <section className="rightNav">
         <ul>
           <li>
-            <Link to="/account" className="accountLink">
+            <Link to="/login" className="accountLink">
               <i className="far fa-user-circle"></i>
             </Link>
           </li>

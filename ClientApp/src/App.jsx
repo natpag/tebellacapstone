@@ -4,6 +4,8 @@ import { Home } from './pages/Home'
 import { Account } from './pages/Account'
 import { TeaHistory } from './pages/TeaHistory'
 import { TeaLog } from './pages/TeaLog'
+import { SignUp } from './pages/SignUp'
+import { LoginPage } from './pages/LoginPage'
 import NotFound from './pages/NotFound'
 import './custom.scss'
 export default class App extends Component {
@@ -16,7 +18,8 @@ export default class App extends Component {
         <Route exact path="/account" component={Account} />
         <Route exact path="/teahistory" component={TeaHistory} />
         <Route exact path="/tealog" component={TeaLog} />
-
+        <Route exact path="/signup" component={SignUp} />
+        <Route exact path="/login" component={LoginPage} />
         <Route exact path="*" component={NotFound} />
       </Switch>
     )
