@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Switch } from 'react-router'
+import { Route, Switch, Redirect } from 'react-router'
 import { Home } from './pages/Home'
 import { Account } from './pages/Account'
 import { TeaHistory } from './pages/TeaHistory'
@@ -15,7 +15,17 @@ export default class App extends Component {
     return (
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/account" component={Account} />
+        <Route
+          exact
+          path="/account"
+          render={() => {
+            if (localStorage.getItem('token')) {
+              return <Account />
+            } else {
+              return <Redirect to="/login" />
+            }
+          }}
+        />
         <Route exact path="/teahistory" component={TeaHistory} />
         <Route exact path="/tealog" component={TeaLog} />
         <Route exact path="/signup" component={SignUp} />

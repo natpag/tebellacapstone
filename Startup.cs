@@ -72,8 +72,6 @@ namespace TeBellaCapstone
       app.UseStaticFiles();
       app.UseSpaStaticFiles();
       app.UseSwagger();
-      app.UseAuthentication();
-      app.UseAuthorization();
 
       // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
       // specifying the Swagger JSON endpoint.
@@ -83,6 +81,9 @@ namespace TeBellaCapstone
 
       });
       app.UseRouting();
+
+      app.UseAuthentication();
+      app.UseAuthorization();
 
       app.UseEndpoints(endpoints =>
       {
