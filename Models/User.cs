@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace TeBellaCapstone.Models
 {
   public class User
@@ -7,6 +9,7 @@ namespace TeBellaCapstone.Models
     public string LastName { get; set; }
     public string PhoneNumber { get; set; }
     public string Email { get; set; }
+    [JsonIgnore]
     public string HashedPassword { get; set; }
 
   }

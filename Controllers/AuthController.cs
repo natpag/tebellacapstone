@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Configuration;
 
 
 namespace TeBellaCapstone.Controllers
@@ -21,9 +22,12 @@ namespace TeBellaCapstone.Controllers
   public class AuthController : ControllerBase
   {
 
-    private DatabaseContext _context;
-    public AuthController(DatabaseContext context)
+    readonly private DatabaseContext _context;
+    readonly private string JWT_KEY;
+
+    public AuthController(DatabaseContext context, IConfiguration config)
     {
+      JWT_KEY = config["JWT_KEY"];
       _context = context;
     }
 
@@ -44,7 +48,7 @@ namespace TeBellaCapstone.Controllers
       }),
         Expires = expirationTime,
         SigningCredentials = new SigningCredentials(
-               new SymmetricSecurityKey(Encoding.ASCII.GetBytes("SOME REALLY LONG SECRET STRING")),
+               new SymmetricSecurityKey(Encoding.ASCII.GetBytes(JWT_KEY)),
               SecurityAlgorithms.HmacSha256Signature
           )
       };
@@ -79,13 +83,11 @@ namespace TeBellaCapstone.Controllers
         Email = newUser.Email
       };
       var hashed = new PasswordHasher<User>().HashPassword(user, newUser.Password);
-
       user.HashedPassword = hashed;
-      _context.Users.Add(user);
 
+      _context.Users.Add(user);
       await _context.SaveChangesAsync();
 
-      user.HashedPassword = null;
       return Ok(new { Token = CreateJWT(user), user = user });
 
     }
@@ -108,7 +110,6 @@ namespace TeBellaCapstone.Controllers
       if (results == PasswordVerificationResult.Success)
       {
         // create the token
-        user.HashedPassword = null;
         return Ok(new { Token = CreateJWT(user), user = user });
       }
       else

@@ -54,5 +54,3 @@ To update after download, its the same command
 ```sh
 dotnet new --install SDG.templates.Web.React::X.X.X
 ```
-
-hXwRCaLDDAXNwHaAIzn1St0kyLKKX3EQYuJrjiCjZbwfFnM8AQVCVZpMqYRtvqoaFGZyM6QhJF9As3W1Ze5dZXQIfoTjBiJtlrft22Esbbxrn2QDnavDvh2nvrILPn3SeS6VIY1Pe4tk062JjJJa3rMyHnlZCh47VujdLw3VvzOcG71leFnEnMrzkqoqB4UXT7

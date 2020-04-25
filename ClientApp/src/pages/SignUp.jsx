@@ -3,6 +3,7 @@ import NavBar from '../components/NavBar'
 import { Link } from 'react-router-dom'
 import '../custom.scss'
 import Axios from 'axios'
+import { Redirect } from 'react-router-dom'
 
 export function SignUp() {
   const [firstName, setFirstName] = useState('')
@@ -10,6 +11,7 @@ export function SignUp() {
   const [phoneNumber, setPhoneNumber] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [shouldRedirect, setShouldRedirect] = useState(false)
 
   const sendNewUserToApi = async () => {
     const resp = await Axios.post('/auth/signup', {
@@ -20,6 +22,14 @@ export function SignUp() {
       password: password,
     })
     console.log(resp.data)
+    if (resp.status === 200) {
+      localStorage.setItem('token', resp.data.token)
+      setShouldRedirect(true)
+    }
+  }
+
+  if (shouldRedirect) {
+    return <Redirect to="/account" />
   }
 
   return (
@@ -102,7 +112,7 @@ export function SignUp() {
             </section>
           </section>
           <button className="saveChanges" onClick={sendNewUserToApi}>
-            <Link to="/account">Save Changes</Link>
+            Sign Up
           </button>
         </section>
       </section>
