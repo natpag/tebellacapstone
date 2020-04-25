@@ -1,7 +1,7 @@
 namespace TeBellaCapstone.ViewModels
 {
 
-  public class NewUser
+  public class NewUsers
   {
     public string FirstName { get; set; }
     public string LastName { get; set; }
