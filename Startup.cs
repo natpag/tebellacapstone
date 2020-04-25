@@ -7,6 +7,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TeBellaCapstone.Models;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Token;
+
 
 namespace TeBellaCapstone
 {
@@ -25,6 +28,7 @@ namespace TeBellaCapstone
     {
 
       services.AddControllersWithViews();
+      services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
       // In production, the React files will be served from this directory
       services.AddSpaStaticFiles(configuration =>
