@@ -23,7 +23,9 @@ export function AddATea() {
                         <button>*</button> <label>Tea Name</label>
                       </li>
                       <li>
-                        <input type="text" />
+                        <select>
+                          <option value="1">Earl Grey</option>
+                        </select>
                       </li>
                     </ul>
                   </section>
@@ -33,7 +35,10 @@ export function AddATea() {
                   <ul>
                     <label>Rating</label>
                     <li>
-                      <input /> /5
+                      <select>
+                        <option value="1">1</option>
+                      </select>
+                      /5
                     </li>
                   </ul>
                 </section>
