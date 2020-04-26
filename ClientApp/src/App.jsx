@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from 'react-router'
 import { Home } from './pages/Home'
 import { Account } from './pages/Account'
 import { TeaHistory } from './pages/TeaHistory'
-import { TeaLog } from './pages/TeaLog'
+import { AddATea } from './pages/AddATea'
 import { SignUp } from './pages/SignUp'
 import { LoginPage } from './pages/LoginPage'
 import NotFound from './pages/NotFound'
@@ -27,7 +27,7 @@ export default class App extends Component {
           }}
         />
         <Route exact path="/teahistory" component={TeaHistory} />
-        <Route exact path="/tealog" component={TeaLog} />
+        <Route exact path="/addtea" component={AddATea} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/login" component={LoginPage} />
         <Route exact path="*" component={NotFound} />

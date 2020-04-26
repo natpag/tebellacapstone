@@ -15,12 +15,12 @@ const NavBar = () => {
           </li>
           <li>
             <Link to="/teahistory" className="teahistory">
-              <i className="fas fa-mug-hot"></i>
+              <i className="fas fa-clipboard-list"></i>
             </Link>
           </li>
           <li>
-            <Link to="/tealog" className="tealog">
-              <i className="fas fa-clipboard-list"></i>
+            <Link to="/addtea" className="tealog">
+              <i className="fas fa-mug-hot"></i>
             </Link>
           </li>
         </ul>
