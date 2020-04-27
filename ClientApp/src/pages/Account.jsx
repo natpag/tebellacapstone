@@ -3,6 +3,7 @@ import NavBar from '../components/NavBar'
 import Logo from '../components/images/logo.png'
 import axios from 'axios'
 import '../custom.scss'
+import { Redirect } from 'react-router'
 
 export function Account() {
   const [profile, setProfile] = useState({})
@@ -12,7 +13,9 @@ export function Account() {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     })
-
+    if (resp.status !== 200) {
+      return <Redirect to="/login" />
+    }
     console.log(resp.data)
     setProfile(resp.data)
   }

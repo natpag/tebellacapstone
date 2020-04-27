@@ -52,41 +52,6 @@ namespace TeBellaCapstone.Controllers
       return review;
     }
 
-    // PUT: api/Reviews/5
-    // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-    // more details see https://aka.ms/RazorPagesCRUD.
-    // [HttpPut("{id}")]
-    // public async Task<IActionResult> PutReview(int id, Review review)
-    // {
-    //   if (id != review.Id)
-    //   {
-    //     return BadRequest();
-    //   }
-
-    //   _context.Entry(review).State = EntityState.Modified;
-
-    //   try
-    //   {
-    //     await _context.SaveChangesAsync();
-    //   }
-    //   catch (DbUpdateConcurrencyException)
-    //   {
-    //     if (!Tea(id))
-    //     {
-    //       return NotFound();
-    //     }
-    //     else
-    //     {
-    //       throw;
-    //     }
-    //   }
-
-    //   return NoContent();
-
-
-    // POST: api/Reviews
-    // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-    // more details see https://aka.ms/RazorPagesCRUD.
     [HttpPost]
     public async Task<ActionResult<Review>> PostReview(ReviewModel reviewModel)
     {
@@ -99,7 +64,7 @@ namespace TeBellaCapstone.Controllers
         TeaId = reviewModel.TeaId,
         Rating = reviewModel.Rating,
         Comment = reviewModel.Comment,
-        UserId = userId
+        UserId = userId //tried to hard code, still failed
       };
 
       _context.Reviews.Add(review);

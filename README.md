@@ -55,11 +55,13 @@ To update after download, its the same command
 dotnet new --install SDG.templates.Web.React::X.X.X
 ```
 
-[] - In AddATeaReview, make sure to work on onClick for Tea Name Saving
-[] - Check to see about using a model to post info to the endpoint for review to save
-[] - work on posting Rating int
-[] - work on posting review
+[x] - In AddATeaReview, make sure to work on onClick for Tea Name Saving
+[x] - Check to see about using a model to post info to the endpoint for review to save
+[x] - work on posting Rating int
+[x] - work on posting review
+[] - give indication that tea was saved (little green message)
 [] - Check Mark's video for how to favorite something
 [] - create and implament favorite feature on Log a tea ...
 [] - show all logged teas
 [] - sort by favorited ...
+[] - add delete a logged tea feature

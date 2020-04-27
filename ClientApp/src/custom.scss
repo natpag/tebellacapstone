@@ -195,6 +195,32 @@ select {
   padding-left: 2rem;
 }
 
+.reviewBody {
+  background-color: rgba(255, 255, 255, 0.5);
+  grid-row-start: 3;
+  grid-row-end: 10;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.teaLogList {
+  padding: 5px;
+  border: 0.5px solid #dadada;
+  margin-bottom: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+.reviewSection {
+  padding: 5px;
+  border: 0.5px solid #dadada;
+  border-top: none;
+  text-align: center;
+}
+
 /*ACCOUNT MOBILE*/
 .body {
   background-color: #f1ede1;

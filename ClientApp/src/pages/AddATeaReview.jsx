@@ -36,11 +36,19 @@ export function AddATeaReview() {
   }
 
   const addReviewToApi = async () => {
-    const resp = await Axios.post('/api/Review', {
-      TeaId: selectedTea,
-      Rating: rating,
-      Comment: comment['reviewBox'],
-    })
+    const resp = await Axios.post(
+      '/api/Review',
+      {
+        TeaId: parseInt(selectedTea),
+        Rating: parseInt(rating),
+        Comment: comment['reviewBox'],
+      },
+      {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+      }
+    )
     if (resp.status === 201) {
       //do something
     } else {
