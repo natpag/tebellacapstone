@@ -27,14 +27,16 @@ namespace TeBellaCapstone.Controllers
       _userService = userService;
     }
 
-    //Get:api/Reviews
+    //Get:api/Review
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Review>>> GetReviews()
     {
-      return await _context.Reviews.ToListAsync();
+      var userId = _userService.GetCurrentUserId(User);
+
+      return await _context.Reviews.Where(review => review.UserId == userId).ToListAsync();
     }
 
-    //GET: api/Reviews/5
+    //GET: api/Review/5
     [HttpGet("{id}")]
     public async Task<ActionResult<Review>> GetReview(int id)
     {

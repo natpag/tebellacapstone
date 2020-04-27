@@ -8,7 +8,11 @@ export function TeaHistory() {
   const [teaInfo, setTeaInfo] = useState({})
 
   const populateTeaReview = async () => {
-    const resp = await Axios.get('/api/Reviews')
+    const resp = await Axios.get('/api/Review', {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
+    })
     console.log(resp.data)
     setTeaInfo(resp.data)
   }
