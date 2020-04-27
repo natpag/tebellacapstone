@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import NavBar from '../components/NavBar'
 import { Link } from 'react-router-dom'
 import '../custom.scss'
+import { Redirect } from 'react-router'
 
 export function LoginPage() {
   const [logInEmail, setLogInEmail] = useState('')
   const [logInPassword, setLogInPassword] = useState('')
-  const [token, setToken] = useState('')
+  const [shouldRedirect, setShouldRedirect] = useState(false)
+  const [profile, setProfile] = useState({})
 
   const logUserIntoApi = async () => {
     const resp = await axios.post('/auth/login', {
@@ -15,16 +17,12 @@ export function LoginPage() {
       password: logInPassword,
     })
     console.log(resp.data)
-    setToken(resp.data.token)
+    localStorage.setItem('token', resp.data.token)
+    setShouldRedirect(true)
   }
 
-  const getSecretInformation = async () => {
-    const resp = await axios.get('/api/secret', {
-      headers: {
-        Authorization: 'Bearer ' + token,
-      },
-    })
-    console.log(resp.data)
+  if (shouldRedirect) {
+    return <Redirect to="/account" />
   }
 
   return (
@@ -68,7 +66,7 @@ export function LoginPage() {
               </section>
             </section>
             <button className="saveChanges" onClick={logUserIntoApi}>
-              <Link to="/account">Login</Link>
+              Login
             </button>
             <section className="signupLink">
               Don't have an account? Sign Up

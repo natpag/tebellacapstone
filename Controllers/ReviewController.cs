@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TeBellaCapstone.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TeBellaCapstone.Models;
@@ -12,13 +15,16 @@ namespace TeBellaCapstone.Controllers
 {
   [Route("api/[controller]")]
   [ApiController]
+  [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
   public class ReviewController : ControllerBase
   {
     private readonly DatabaseContext _context;
+    private readonly IUserService _userService;
 
-    public ReviewController(DatabaseContext context)
+    public ReviewController(DatabaseContext context, IUserService userService)
     {
       _context = context;
+      _userService = userService;
     }
 
     //Get:api/Reviews
@@ -82,12 +88,24 @@ namespace TeBellaCapstone.Controllers
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for
     // more details see https://aka.ms/RazorPagesCRUD.
     [HttpPost]
-    public async Task<ActionResult<Review>> PostReview(Review review)
+    public async Task<ActionResult<Review>> PostReview(ReviewModel reviewModel)
     {
+
+      //get user Id to add to the review
+      var userId = _userService.GetCurrentUserId(User);
+
+      var review = new Review
+      {
+        TeaId = reviewModel.TeaId,
+        Rating = reviewModel.Rating,
+        Comment = reviewModel.Comment,
+        UserId = userId
+      };
+
       _context.Reviews.Add(review);
       await _context.SaveChangesAsync();
 
-      return CreatedAtAction("GetReview", new { id = review.Id }, review);
+      return Ok(review);
     }
 
     // // DELETE: api/Trails/5

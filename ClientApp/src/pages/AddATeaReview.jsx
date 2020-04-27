@@ -7,7 +7,9 @@ import Axios from 'axios'
 
 export function AddATeaReview() {
   const [allTeas, setAllTeas] = useState()
-  const [review, setReview] = useState({})
+  const [comment, setComment] = useState({})
+  const [rating, setRating] = useState()
+  const [selectedTea, setSelectedTea] = useState()
 
   const getAllTeas = async () => {
     const resp = await Axios.get('/api/Teas')
@@ -20,6 +22,29 @@ export function AddATeaReview() {
       return allTeas
     } else {
       return []
+    }
+  }
+
+  const updateComment = e => {
+    const key = e.target.name
+    const value = e.target.value
+    setComment(prevComment => {
+      prevComment[key] = value
+      return prevComment
+    })
+    console.log(comment)
+  }
+
+  const addReviewToApi = async () => {
+    const resp = await Axios.post('/api/Review', {
+      TeaId: selectedTea,
+      Rating: rating,
+      Comment: comment['reviewBox'],
+    })
+    if (resp.status === 201) {
+      //do something
+    } else {
+      //do something else
     }
   }
 
@@ -49,7 +74,7 @@ export function AddATeaReview() {
                         <section>
                           <select
                             className="teaNameSelector"
-                            onChange={e => e.target.value}
+                            onChange={e => setSelectedTea(e.target.value)}
                           >
                             <option value=""></option>
                             {getDropTeas().map(teaName => {
@@ -70,8 +95,12 @@ export function AddATeaReview() {
                   <ul>
                     <label htmlFor="">Rating</label>
                     <li>
-                      <select>
+                      <select onChange={e => setRating(e.target.value)}>
                         <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
                       </select>
                       /5
                     </li>
@@ -84,10 +113,17 @@ export function AddATeaReview() {
                       <label htmlFor="">Review</label>
                     </li>
                     <li>
-                      <textarea />
+                      <textarea
+                        type="text"
+                        rows="5"
+                        cols="30"
+                        name="reviewBox"
+                        className="reviewBox"
+                        onChange={updateComment}
+                      />
                     </li>
                     <li>
-                      <button>Save Review</button>
+                      <button onClick={addReviewToApi}>Save Review</button>
                     </li>
                   </ul>
                 </section>

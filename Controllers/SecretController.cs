@@ -15,11 +15,11 @@ namespace TeBellaCapstone.Controllers
   [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
   public class SecretController : ControllerBase
   {
-    [HttpGet]
-    public async Task<ActionResult> UserOnlyEndpoint()
-    {
-      return Ok(new { message = "Members Only Endpoint" });
-    }
+    // [HttpGet]
+    // public async Task<ActionResult> UserOnlyEndpoint()
+    // {
+    //   return Ok(new { message = "Members Only Endpoint" });
+    // }
 
   }
 }
