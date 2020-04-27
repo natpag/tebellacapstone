@@ -29,11 +29,28 @@ namespace TeBellaCapstone.Controllers
 
     //Get:api/Review
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Review>>> GetReviews()
+    public async Task<ActionResult<IEnumerable<ReviewModel>>> GetReviews()
     {
       var userId = _userService.GetCurrentUserId(User);
 
-      return await _context.Reviews.Where(review => review.UserId == userId).ToListAsync();
+      var reviewModels = await _context
+      .Reviews
+      .Where(review => review.UserId == userId)
+      .Select(review => new ReviewModel()
+      {
+        TeaId = review.TeaId,
+        TeaName = review.Tea.Name,
+        Rating = review.Rating,
+        Comment = review.Comment
+      })
+      .ToListAsync();
+
+      if (reviewModels == null)
+      {
+        return NotFound();
+      }
+
+      return reviewModels;
     }
 
     //GET: api/Review/5
