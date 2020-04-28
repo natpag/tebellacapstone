@@ -45,6 +45,7 @@ namespace TeBellaCapstone.Controllers
         IsFavorite = review.IsFavorite,
         Comment = review.Comment
       })
+      .OrderBy(review => review.TeaName)
       .ToListAsync();
 
       if (reviewModels == null)
@@ -121,27 +122,23 @@ namespace TeBellaCapstone.Controllers
       return Ok();
     }
 
+
+    // DELETE: api/Reviews/5
+    [HttpDelete("{id}")]
+    public async Task<ActionResult<Review>> DeleteReview(int id)
+    {
+      var review = await _context.Reviews.FindAsync(id);
+      if (review == null)
+      {
+        return NotFound();
+      }
+
+      _context.Reviews.Remove(review);
+      await _context.SaveChangesAsync();
+
+      return review;
+    }
   }
 
 
-  // // DELETE: api/Trails/5
-  // [HttpDelete("{id}")]
-  // public async Task<ActionResult<Review>> DeleteReview(int id)
-  // {
-  //   var review = await _context.Reviews.FindAsync(id);
-  //   if (review == null)
-  //   {
-  //     return NotFound();
-  //   }
-
-  //   _context.Reviews.Remove(review);
-  //   await _context.SaveChangesAsync();
-
-  //   return review;
-  // }
-
-  // private bool TrailExists(int id)
-  // {
-  //   return _context.Reviews.Any(e => e.Id == id);
-  // }
 }

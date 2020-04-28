@@ -24,7 +24,9 @@ namespace TeBellaCapstone.Controllers
     [HttpGet]
     public ActionResult<IEnumerable<Tea>> GetTeas()
     {
-      var result = new ActionResult<IEnumerable<Tea>>(GetAllTeas());
+      var teas = GetAllTeas();
+
+      var result = new ActionResult<IEnumerable<Tea>>(teas);
 
       return result;
     }

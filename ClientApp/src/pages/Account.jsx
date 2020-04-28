@@ -7,6 +7,8 @@ import { Redirect } from 'react-router'
 
 export function Account() {
   const [profile, setProfile] = useState({})
+  const [shouldRedirectToLogin, setShouldRedirectToLogin] = useState(false)
+
   const loadProfile = async () => {
     const resp = await axios.get('/api/profile', {
       headers: {
@@ -14,7 +16,7 @@ export function Account() {
       },
     })
     if (resp.status !== 200) {
-      return <Redirect to="/login" />
+      setShouldRedirectToLogin(true)
     }
     console.log(resp.data)
     setProfile(resp.data)
@@ -24,6 +26,9 @@ export function Account() {
     loadProfile()
   }, [])
 
+  if (shouldRedirectToLogin) {
+    return <Redirect to="/login" />
+  }
   return (
     <section className="body">
       <section className="randomizePage">

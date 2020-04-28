@@ -28,6 +28,16 @@ export function TeaHistory() {
     populateTeaReview()
   }
 
+  const deleteReview = async review => {
+    const resp = await Axios.delete('/api/Review/' + review.id, {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
+    })
+    console.log(resp.data)
+    populateTeaReview()
+  }
+
   useEffect(() => {
     populateTeaReview()
   }, [])
@@ -48,7 +58,10 @@ export function TeaHistory() {
                   <section className="teaReviewBox">
                     <ul className="teaLogList">
                       <li className="favoritedTea">
-                        <button onClick={() => toggleIsFavorite(result)}>
+                        <button
+                          className="iconButton"
+                          onClick={() => toggleIsFavorite(result)}
+                        >
                           {result.isFavorite ? (
                             <i className="fas fa-heart"></i>
                           ) : (
@@ -58,6 +71,14 @@ export function TeaHistory() {
                       </li>
                       <li className="nameLabel">{result.teaName}</li>
                       <li>Rating: {result.rating}</li>
+                      <li>
+                        <button
+                          className="iconButton"
+                          onClick={() => deleteReview(result)}
+                        >
+                          <i className="fas fa-times"></i>
+                        </button>
+                      </li>
                     </ul>
                     <section className="reviewSection">
                       {result.comment}

@@ -4,6 +4,7 @@ import Logo from '../components/images/logo.png'
 import '../custom.scss'
 import { Link } from 'react-router-dom'
 import Axios from 'axios'
+import { Redirect } from 'react-router'
 
 export function AddATeaReview() {
   const [allTeas, setAllTeas] = useState()
@@ -11,6 +12,9 @@ export function AddATeaReview() {
   const [rating, setRating] = useState()
   const [selectedTea, setSelectedTea] = useState()
   const [isFavorite, setIsFavorite] = useState(false)
+  const [shouldRedirectToTeaHistory, setShouldRedirectToTeaHistory] = useState(
+    false
+  )
 
   const getAllTeas = async () => {
     const resp = await Axios.get('/api/Teas')
@@ -55,12 +59,18 @@ export function AddATeaReview() {
         },
       }
     )
+    if (resp.status === 200) {
+      setShouldRedirectToTeaHistory(true)
+    }
   }
 
   useEffect(() => {
     getAllTeas()
   }, [])
 
+  if (shouldRedirectToTeaHistory) {
+    return <Redirect to="/teahistory" />
+  }
   return (
     <section className="body">
       <section className="randomizePage">
@@ -120,7 +130,7 @@ export function AddATeaReview() {
                   <ul>
                     <li>
                       Favorite{' '}
-                      <button onClick={toggleIsFavorite}>
+                      <button className="iconButton" onClick={toggleIsFavorite}>
                         {isFavorite ? (
                           <i className="fas fa-heart"></i>
                         ) : (
