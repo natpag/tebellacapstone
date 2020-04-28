@@ -8,6 +8,7 @@ namespace TeBellaCapstone.Models
     public string TeaName { get; set; }
     public int Rating { get; set; }
     public string Comment { get; set; }
+    public bool IsFavorite { get; set; }
 
   }
 }

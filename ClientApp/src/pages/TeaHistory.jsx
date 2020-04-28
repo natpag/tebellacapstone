@@ -6,6 +6,7 @@ import Axios from 'axios'
 
 export function TeaHistory() {
   const [teaInfo, setTeaInfo] = useState([])
+  const [isFavorite, setIsFavorite] = useState(false)
 
   const populateTeaReview = async () => {
     const resp = await Axios.get('/api/Review', {
@@ -16,6 +17,22 @@ export function TeaHistory() {
     console.log(resp.data)
     setTeaInfo(resp.data)
   }
+  // const toggleIsFavorite = async () => {
+  //   setIsFavorite(!isFavorite)
+  //   const resp = await Axios.post(
+  //     '/api/Review/FavoriteTea',
+  //     {
+  //       IsFavorite: isFavorite,
+  //       TeaId: parseInt(selectedTea),
+  //     },
+  //     {
+  //       headers: {
+  //         Authorization: 'Bearer ' + localStorage.getItem('token'),
+  //       },
+  //     }
+  //   )
+  //   console.log(resp.data)
+  // }
 
   useEffect(() => {
     populateTeaReview()
@@ -36,7 +53,15 @@ export function TeaHistory() {
                 <section className="accountSection">
                   <section className="teaReviewBox">
                     <ul className="teaLogList">
-                      <li className="favoritedTea"></li>
+                      {/* <li className="favoritedTea">
+                        <button onClick={toggleIsFavorite}>
+                          {isFavorite ? (
+                            <i className="fas fa-heart"></i>
+                          ) : (
+                            <i className="far fa-heart"></i>
+                          )}
+                        </button> }
+                          </li>*/}
                       <li className="nameLabel">{result.teaName}</li>
                       <li>Rating: {result.rating}</li>
                     </ul>

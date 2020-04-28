@@ -7,6 +7,7 @@ namespace TeBellaCapstone.Models
     public int Id { get; set; }
     public int Rating { get; set; }
     public string Comment { get; set; }
+    public bool IsFavorite { get; set; }
 
     public int TeaId { get; set; }
     public int UserId { get; set; }

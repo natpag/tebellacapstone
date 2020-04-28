@@ -17,8 +17,6 @@ namespace TeBellaCapstone.Models
 
     public DbSet<UserTea> UserTeas { get; set; }
 
-    public DbSet<FavoriteTea> FavoriteTeas { get; set; }
-
 
     private string ConvertPostConnectionToConnectionString(string connection)
     {

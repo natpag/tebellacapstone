@@ -10,11 +10,16 @@ export function AddATeaReview() {
   const [comment, setComment] = useState({})
   const [rating, setRating] = useState()
   const [selectedTea, setSelectedTea] = useState()
+  const [isFavorite, setIsFavorite] = useState(false)
 
   const getAllTeas = async () => {
     const resp = await Axios.get('/api/Teas')
     console.log(resp.data)
     setAllTeas(resp.data)
+  }
+
+  const toggleIsFavorite = () => {
+    setIsFavorite(!isFavorite)
   }
 
   const getDropTeas = () => {
@@ -42,6 +47,7 @@ export function AddATeaReview() {
         TeaId: parseInt(selectedTea),
         Rating: parseInt(rating),
         Comment: comment['reviewBox'],
+        IsFavorite: isFavorite,
       },
       {
         headers: {
@@ -49,11 +55,6 @@ export function AddATeaReview() {
         },
       }
     )
-    if (resp.status === 201) {
-      //do something
-    } else {
-      //do something else
-    }
   }
 
   useEffect(() => {
@@ -118,7 +119,14 @@ export function AddATeaReview() {
                 <section>
                   <ul>
                     <li>
-                      Favorite <i className="far fa-heart"></i>
+                      Favorite{' '}
+                      <button onClick={toggleIsFavorite}>
+                        {isFavorite ? (
+                          <i className="fas fa-heart"></i>
+                        ) : (
+                          <i className="far fa-heart"></i>
+                        )}
+                      </button>
                     </li>
                     <li>
                       <label>Review</label>
