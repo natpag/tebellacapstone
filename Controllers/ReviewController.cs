@@ -92,26 +92,47 @@ namespace TeBellaCapstone.Controllers
       return Ok(review);
     }
 
-    // // DELETE: api/Trails/5
-    // [HttpDelete("{id}")]
-    // public async Task<ActionResult<Review>> DeleteReview(int id)
+    // [HttpPost("{reviewId}")]
+    //  public async Task<ActionResult> FavoriteTeaForUser(int reviewId)
     // {
-    //   var review = await _context.Reviews.FindAsync(id);
-    //   if (review == null)
+    //   // get the user Id form the User Object
+    //   var userId = _userService.GetCurrentUserId(User);
+
+    //   // create a new bookmark 
+    //   var favorite = new Bookmark
     //   {
-    //     return NotFound();
-    //   }
-
-    //   _context.Reviews.Remove(review);
+    //     TrailId = trailId,
+    //     UserId = userId
+    //   };
+    //   //save it our database
+    //   _context.Bookmarks.Add(bookmark);
     //   await _context.SaveChangesAsync();
-
-    //   return review;
+    //   // return something?
+    //   return Ok(bookmark);
     // }
 
-    // private bool TrailExists(int id)
-    // {
-    //   return _context.Reviews.Any(e => e.Id == id);
-    // }
   }
 
+
+  // // DELETE: api/Trails/5
+  // [HttpDelete("{id}")]
+  // public async Task<ActionResult<Review>> DeleteReview(int id)
+  // {
+  //   var review = await _context.Reviews.FindAsync(id);
+  //   if (review == null)
+  //   {
+  //     return NotFound();
+  //   }
+
+  //   _context.Reviews.Remove(review);
+  //   await _context.SaveChangesAsync();
+
+  //   return review;
+  // }
+
+  // private bool TrailExists(int id)
+  // {
+  //   return _context.Reviews.Any(e => e.Id == id);
+  // }
 }
+

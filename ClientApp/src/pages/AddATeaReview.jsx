@@ -76,7 +76,7 @@ export function AddATeaReview() {
                   <section>
                     <ul>
                       <li>
-                        <button>*</button> <label htmlFor="">Tea Name</label>
+                        <label>Tea Name</label>
                       </li>
                       <li>
                         <section>
@@ -101,7 +101,7 @@ export function AddATeaReview() {
 
                 <section>
                   <ul>
-                    <label htmlFor="">Rating</label>
+                    <label>Rating</label>
                     <li>
                       <select onChange={e => setRating(e.target.value)}>
                         <option value="1">1</option>
@@ -118,7 +118,10 @@ export function AddATeaReview() {
                 <section>
                   <ul>
                     <li>
-                      <label htmlFor="">Review</label>
+                      Favorite <i className="far fa-heart"></i>
+                    </li>
+                    <li>
+                      <label>Review</label>
                     </li>
                     <li>
                       <textarea

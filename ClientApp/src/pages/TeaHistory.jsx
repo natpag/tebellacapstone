@@ -36,7 +36,7 @@ export function TeaHistory() {
                 <section className="accountSection">
                   <section className="teaReviewBox">
                     <ul className="teaLogList">
-                      <li>*</li>
+                      <li className="favoritedTea"></li>
                       <li className="nameLabel">{result.teaName}</li>
                       <li>Rating: {result.rating}</li>
                     </ul>
