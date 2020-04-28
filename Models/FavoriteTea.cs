@@ -2,7 +2,7 @@ using System;
 
 namespace TeBellaCapstone.Models
 {
-  public class FavoriteTeas
+  public class FavoriteTea
   {
     public int Id { get; set; }
 

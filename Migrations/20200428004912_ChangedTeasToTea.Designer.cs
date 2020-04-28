@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using TeBellaCapstone.Models;
@@ -9,37 +10,16 @@ using TeBellaCapstone.Models;
 namespace TeBellaCapstone.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20200428004912_ChangedTeasToTea")]
+    partial class ChangedTeasToTea
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
                 .HasAnnotation("ProductVersion", "3.1.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
-
-            modelBuilder.Entity("TeBellaCapstone.Models.FavoriteTea", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<int>("TeaId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TeaId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("FavoriteTeas");
-                });
 
             modelBuilder.Entity("TeBellaCapstone.Models.Review", b =>
                 {
@@ -190,21 +170,6 @@ namespace TeBellaCapstone.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UserTeas");
-                });
-
-            modelBuilder.Entity("TeBellaCapstone.Models.FavoriteTea", b =>
-                {
-                    b.HasOne("TeBellaCapstone.Models.Tea", "Tea")
-                        .WithMany()
-                        .HasForeignKey("TeaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TeBellaCapstone.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("TeBellaCapstone.Models.Review", b =>

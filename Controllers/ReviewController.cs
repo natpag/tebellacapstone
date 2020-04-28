@@ -83,7 +83,7 @@ namespace TeBellaCapstone.Controllers
         TeaId = reviewModel.TeaId,
         Rating = reviewModel.Rating,
         Comment = reviewModel.Comment,
-        UserId = userId //tried to hard code, still failed
+        UserId = userId
       };
 
       _context.Reviews.Add(review);
@@ -91,27 +91,28 @@ namespace TeBellaCapstone.Controllers
 
       return Ok(review);
     }
-
-    // [HttpPost("{reviewId}")]
-    //  public async Task<ActionResult> FavoriteTeaForUser(int reviewId)
-    // {
-    //   // get the user Id form the User Object
-    //   var userId = _userService.GetCurrentUserId(User);
-
-    //   // create a new bookmark 
-    //   var favorite = new Bookmark
-    //   {
-    //     TrailId = trailId,
-    //     UserId = userId
-    //   };
-    //   //save it our database
-    //   _context.Bookmarks.Add(bookmark);
-    //   await _context.SaveChangesAsync();
-    //   // return something?
-    //   return Ok(bookmark);
-    // }
-
   }
+
+  //   [HttpPost("{reviewId}")]
+  //    public async Task<ActionResult<FavoriteTeasModel>> FavoriteTeaForUser(FavoriteTeasModel favoriteTeasModel)
+  //   {
+  //     // get the user Id form the User Object
+  //     var userId = _userService.GetCurrentUserId(User);
+
+  //     // create a new bookmark 
+  //     var favorite = new FavoriteTeasModel
+  //     {
+  //       TeaId = favoriteTeasModel.TeaId,
+  //       UserId = userId
+  //     };
+  //     //save it our database
+  //     _context.FavoriteTeas.Add(favorite);
+  //     await _context.SaveChangesAsync();
+  //     // return something?
+  //     return Ok(favorite);
+  //   }
+
+  // }
 
 
   // // DELETE: api/Trails/5
