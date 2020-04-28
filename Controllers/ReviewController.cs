@@ -38,9 +38,11 @@ namespace TeBellaCapstone.Controllers
       .Where(review => review.UserId == userId)
       .Select(review => new ReviewModel()
       {
+        Id = review.Id,
         TeaId = review.TeaId,
         TeaName = review.Tea.Name,
         Rating = review.Rating,
+        IsFavorite = review.IsFavorite,
         Comment = review.Comment
       })
       .ToListAsync();
@@ -94,47 +96,52 @@ namespace TeBellaCapstone.Controllers
     }
 
 
-    //   [HttpPost("FavoriteTea")]
-    //   public async Task<ActionResult<FavoriteTeasModel>> FavoriteTeaForUser(FavoriteTeasModel favoriteTeasModel)
-    //   {
-    //     // get the user Id form the User Object
-    //     var userId = _userService.GetCurrentUserId(User);
-
-    //     // create a new bookmark 
-    //     var favorite = new 
-    //     {
-    //       TeaId = favoriteTeasModel.TeaId,
-    //       UserId = userId
-    //     };
-    //     //save it our database
-    //     _context.FavoriteTeas.Add(favorite);
-    //     await _context.SaveChangesAsync();
-    //     // return something?
-    //     return Ok(favorite);
-    //   }
-
-    // }
+    [HttpPost("UpdateReview")]
+    public async Task<ActionResult> FavoriteTeaForUser(ReviewModel reviewModel)
+    {
+      // get the user Id form the User Object
+      var userId = _userService.GetCurrentUserId(User);
 
 
-    // // DELETE: api/Trails/5
-    // [HttpDelete("{id}")]
-    // public async Task<ActionResult<Review>> DeleteReview(int id)
-    // {
-    //   var review = await _context.Reviews.FindAsync(id);
-    //   if (review == null)
-    //   {
-    //     return NotFound();
-    //   }
+      var review = await _context
+          .Reviews
+          .FirstOrDefaultAsync(f => f.Id == reviewModel.Id);
 
-    //   _context.Reviews.Remove(review);
-    //   await _context.SaveChangesAsync();
+      if (review == null)
+      {
+        return NotFound();
+      }
 
-    //   return review;
-    // }
+      review.IsFavorite = reviewModel.IsFavorite;
 
-    // private bool TrailExists(int id)
-    // {
-    //   return _context.Reviews.Any(e => e.Id == id);
-    // }
+      //save it our database
+      _context.Reviews.Update(review);
+      await _context.SaveChangesAsync();
+      // return something?
+      return Ok();
+    }
+
   }
+
+
+  // // DELETE: api/Trails/5
+  // [HttpDelete("{id}")]
+  // public async Task<ActionResult<Review>> DeleteReview(int id)
+  // {
+  //   var review = await _context.Reviews.FindAsync(id);
+  //   if (review == null)
+  //   {
+  //     return NotFound();
+  //   }
+
+  //   _context.Reviews.Remove(review);
+  //   await _context.SaveChangesAsync();
+
+  //   return review;
+  // }
+
+  // private bool TrailExists(int id)
+  // {
+  //   return _context.Reviews.Any(e => e.Id == id);
+  // }
 }
