@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import NavBar from '../components/NavBar'
 import Logo from '../components/images/logo.png'
+import HeroImage from '../components/images/heroImage.jpg'
 import '../custom.scss'
 import { Link } from 'react-router-dom'
 import Axios from 'axios'
@@ -126,6 +127,10 @@ export function Home() {
         <header className="header">
           <NavBar />
         </header>
+        <div className="heroContainer">
+          {/* <img src={HeroImage} alt="HeroImage" /> */}
+        </div>
+
         <main>
           <section className="hero">
             <img className="logo" src={Logo} alt="Logo" />

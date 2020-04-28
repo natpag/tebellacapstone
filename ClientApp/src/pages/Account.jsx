@@ -10,16 +10,18 @@ export function Account() {
   const [shouldRedirectToLogin, setShouldRedirectToLogin] = useState(false)
 
   const loadProfile = async () => {
-    const resp = await axios.get('/api/profile', {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
-    })
-    if (resp.status !== 200) {
+    try {
+      const resp = await axios.get('/api/profile', {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
+      console.log(resp.data)
+      setProfile(resp.data)
+    } catch {
       setShouldRedirectToLogin(true)
+    } finally {
     }
-    console.log(resp.data)
-    setProfile(resp.data)
   }
 
   useEffect(() => {
@@ -39,11 +41,16 @@ export function Account() {
           <section className="pageTitle">{profile.firstName}'s Account</section>
 
           <section className="accountBody">
-            <section className="accountSection">some account info</section>
-            <section>
-              {profile.firstName} {profile.lastName}
-            </section>
-            <section>{profile.email}</section>
+            <ul className="accountInfo">
+              <li className="accountSection">Name:</li>
+              <li>
+                {profile.firstName} {profile.lastName}
+              </li>
+              <li className="accountSection">Email:</li>
+              <li>{profile.email}</li>
+              <li className="accountSection">Phone:</li>
+              <li>{profile.phoneNumber}</li>
+            </ul>
           </section>
         </main>
       </section>

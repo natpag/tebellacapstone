@@ -54,7 +54,7 @@ export function TeaHistory() {
           <section className="reviewBody">
             {teaInfo.map(result => {
               return (
-                <section className="accountSection">
+                <section className="teaLogSection">
                   <section className="teaReviewBox">
                     <ul className="teaLogList">
                       <li className="favoritedTea">
